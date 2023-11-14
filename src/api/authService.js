@@ -16,7 +16,7 @@ const catchErrors = (error) => {
 
 const registerUser = async (userData) => {
   try {
-    const response = await axios.post("http://3.38.191.164/register", userData);
+    const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, userData);
     console.log(response);
     return response;
   } catch (error) {
@@ -26,7 +26,7 @@ const registerUser = async (userData) => {
 
 const loginUser = async (userData) => {
   try {
-    const response = await axios.post("http://3.38.191.164/login", userData);
+    const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, userData);
 
     const token = response.data.token;
     const userId = JSON.parse(response.config.data).id;
@@ -46,7 +46,7 @@ const authUser = async () => {
   const authToken = store.getState().user.token;
 
   try {
-    const response = await axios.get("http://3.38.191.164/user", {
+    const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/user`, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
