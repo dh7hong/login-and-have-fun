@@ -39,8 +39,8 @@ const loginUser = async (userData) => {
     const token = response.data.token;
     const userId = JSON.parse(response.config.data).id;
 
-    localStorage.setItem(userId, token);
-
+    localStorage.setItem('token', token); // Use 'token' as the key
+    localStorage.setItem('userId', userId); // Use 'userId' as the key
     store.dispatch(setToken(token));
     store.dispatch(setUserId(userId)); // Dispatch userId to Redux store
 
