@@ -75,6 +75,7 @@ function Login() {
     localStorage.removeItem("userId");
     delete axios.defaults.headers.common["Authorization"];
     setIsLoggedIn(false);
+    dispatch(logout());
     navigate("/login"); // Navigate to login page on logout
   };
 

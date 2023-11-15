@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { logout, setToken, setUserId } from "../../modules/userSlice";
 import { registerUser, loginUser, authUser } from "../../../api/authService";
 import axios from "axios";
-import store from "../../config/configStore";
-
 import {
   BrowserRouter as Router,
   Route,
@@ -33,6 +31,8 @@ function Header() {
     }
   }, [dispatch]);
 
+
+
   const { mutate: auth } = useMutation(authUser);
 
   const handleAuth = (event) => {
@@ -44,6 +44,7 @@ function Header() {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     delete axios.defaults.headers.common["Authorization"];
+    dispatch(logout());
     setIsLoggedIn(false);
     navigate("/login"); // Navigate to login page on logout
   };

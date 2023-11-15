@@ -51,8 +51,20 @@
     {
       "title": "Distribution",
       "contents": "We need to distribute the code on a server",
-      "isDone": false,
+      "isDone": true,
       "id": 9
+    },
+    {
+      "title": "Does this work",
+      "contents": "Does this work?",
+      "isDone": false,
+      "id": 10
+    },
+    {
+      "title": "Check Function",
+      "contents": "Check the app's features.",
+      "isDone": false,
+      "id": 11
     }
   ]
 }

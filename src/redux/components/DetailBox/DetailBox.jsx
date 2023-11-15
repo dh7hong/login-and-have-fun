@@ -14,19 +14,19 @@ function DetailBox() {
   const params = useParams();
   console.log(`params: ${JSON.stringify(params)}`);
 
-  const obj = data.filter((item) => item.id === params.id);
+  const obj = data.filter((item) => item.id == params.id);
   const filteredTodos = obj;
 
 
-  useEffect(() => {
-    if (filteredTodos.length <= 0 || filteredTodos.length > 1) {
-      alert("This is an incorrect approach. Navigating to the main page.");
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (filteredTodos.length <= 0 || filteredTodos.length > 1) {
+  //     alert("This is an incorrect approach. Navigating to the main page.");
+  //     navigate("/");
+  //   }
+  // }, []);
 
   const todo = filteredTodos[0];
-
+  console.log(`todo: ${todo}`);
   const handleButtonClick = () => {
     navigate("/");
   };
