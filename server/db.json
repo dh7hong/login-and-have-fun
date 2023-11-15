@@ -1,0 +1,58 @@
+{
+  "todos": [
+    {
+      "title": "Login Layout",
+      "contents": "First, make the Login layout.",
+      "isDone": true,
+      "id": 1
+    },
+    {
+      "title": "Code Login",
+      "contents": "We need to code the different components of logging in.",
+      "isDone": true,
+      "id": 2
+    },
+    {
+      "title": "Get JWT",
+      "contents": "We need to find a way to get the JWT.",
+      "isDone": true,
+      "id": 3
+    },
+    {
+      "title": "Authorize",
+      "contents": "We need to be able to authorize the user.",
+      "isDone": true,
+      "id": 4
+    },
+    {
+      "title": "Registration",
+      "contents": "We need a program that registers the user onto our webpage!",
+      "isDone": true,
+      "id": 5
+    },
+    {
+      "title": "Login Features",
+      "contents": "After registration, we need to be able to log into our web app.",
+      "isDone": true,
+      "id": 6
+    },
+    {
+      "title": "Make a todo list app",
+      "contents": "We need to make a todo list app.",
+      "isDone": false,
+      "id": 7
+    },
+    {
+      "title": "Connect",
+      "contents": "Connect the todo list app to our login app.",
+      "isDone": false,
+      "id": 8
+    },
+    {
+      "title": "Distribution",
+      "contents": "We need to distribute the code on a server",
+      "isDone": false,
+      "id": 9
+    }
+  ]
+}

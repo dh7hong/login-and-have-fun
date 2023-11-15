@@ -1,6 +1,7 @@
 import axios from "axios";
 import store from "../redux/config/configStore";
 import { setToken, setUserId } from "../redux/modules/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const catchErrors = (error) => {
   if (error.response) {
@@ -11,12 +12,15 @@ const catchErrors = (error) => {
     );
   } else if (error.request) {
     console.log("No response received:", error.request);
+    alert(`No response received: ${error.request}`);
   } else {
     console.log("Error message:", error.message);
+    alert(`Error message: ${error.message}`);
   }
 };
 
 const registerUser = async (userData) => {
+  
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_SERVER_URL}/register`,
@@ -43,7 +47,7 @@ const loginUser = async (userData) => {
     localStorage.setItem('userId', userId); // Use 'userId' as the key
     store.dispatch(setToken(token));
     store.dispatch(setUserId(userId)); // Dispatch userId to Redux store
-
+    
     return { token, userId };
   } catch (error) {
     catchErrors(error);
@@ -65,6 +69,7 @@ const authUser = async () => {
 
     if (response.status === 200) {
       console.log(response.data.message);
+      alert(response.data.message);
       return response.data;
     }
   } catch (error) {

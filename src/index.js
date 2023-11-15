@@ -1,23 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { Provider } from 'react-redux'
-import store from './redux/config/configStore';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
+import store from "./redux/config/configStore";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-  <Provider store = {store}>
+    <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-          <App />
+        <App />
       </QueryClientProvider>
-  </Provider>
+    </Provider>
   </BrowserRouter>
 );
 

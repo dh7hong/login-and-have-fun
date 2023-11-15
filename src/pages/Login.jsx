@@ -12,67 +12,14 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
-import Home from "./Home";
-import Register from "./Register";
-import styled from "styled-components";
-
-const Container = styled.div`
-  background: linear-gradient(
-    45deg,
-    rgba(66, 183, 245, 0.8) 0%,
-    rgba(66, 245, 189, 0.4) 100%
-  ); /* 부모 컴포넌트의 배경 색상 설정 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-`;
-
-const InputStyle = styled.input`
-  width: 500px;
-  height: 40px;
-  margin-bottom: 20px;
-  display: flex;
-  background: rgba(black, 0.1);
-`;
-
-const BoxStyle = styled.div`
-  border: 1px solid black;
-  width: 800px;
-  height: 600px;
-  padding: 24px;
-  position: relative; /* position 수정 */
-  display: flex;
-  justify-content: center;
-  border-radius: 20px;
-  background-color: white;
-`;
-
-const ClickBoxStyle = styled.button`
-  outline: none;
-  background: $accent;
-  width: 100%;
-  border: 0;
-  border-radius: 4px;
-  padding: 12px 20px;
-  color: $white;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: $semibold;
-  line-height: inherit;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: 20px;
-`;
-
-const ClickBox = styled.div`
-  margin-top: 100px;
-`;
-
-const IdPwBox = styled.div`
-  margin-top: 80px;
-`;
+import {
+  Container,
+  InputStyle,
+  BoxStyle,
+  ClickBoxStyle,
+  ClickBox,
+  IdPwBox,
+} from "./styles";
 
 function Login() {
   const [id, setId] = useState("");
@@ -92,7 +39,6 @@ function Login() {
     }
   }, [dispatch]);
 
-  const { mutate: register } = useMutation(registerUser);
   const { mutate: login } = useMutation(loginUser, {
     onSuccess: (data) => {
       const { token, userId } = data; // Assuming `data` contains both `token` and `userId`
@@ -102,13 +48,6 @@ function Login() {
   });
 
   const { mutate: auth } = useMutation(authUser);
-
-  const handleRegister = (event) => {
-    event.preventDefault();
-    register({ id, password });
-    setId("");
-    setPassword("");
-  };
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -124,8 +63,6 @@ function Login() {
     dispatch(setUserId(userId));
     setIsLoggedIn(true);
     navigate("/home");
-
-    window.location.href = "/home";
   };
 
   const handleAuth = (event) => {
@@ -145,23 +82,22 @@ function Login() {
     navigate(`/register`);
   };
 
-
   return (
     <Container>
       <BoxStyle>
         {!isLoggedIn && (
           <div>
             <form onSubmit={handleLogin}>
-              <h1>로그인</h1>
+              <h1>Login</h1>
               <IdPwBox>
-                <p>아이디</p>
+                <p>ID</p>
                 <InputStyle
                   type="text"
                   value={id}
                   onChange={(e) => setId(e.target.value)}
                   placeholder="ID"
                 />
-                <p>비밀번호</p>
+                <p>Password</p>
                 <InputStyle
                   type="password"
                   value={password}
@@ -171,32 +107,17 @@ function Login() {
               </IdPwBox>
               <ClickBox>
                 <div>
-                  <ClickBoxStyle type="submit">로그인</ClickBoxStyle>
+                  <ClickBoxStyle type="submit">Login</ClickBoxStyle>
                 </div>
                 <div>
                   <ClickBoxStyle onClick={handleRegisterPageLinkClick}>
-                    회원가입
+                    Register
                   </ClickBoxStyle>
                 </div>
               </ClickBox>
             </form>
           </div>
         )}
-        <Routes>
-          <Route
-            path="/login"
-            element={!isLoggedIn ? <Login /> : <Navigate to="/home" />}
-          />
-          <Route path="/register" element={<Register />} />
-          <Route
-            path="/home"
-            element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/"
-            element={!isLoggedIn ? <Navigate to="/login" /> : <Home />}
-          />
-        </Routes>
       </BoxStyle>
     </Container>
   );
