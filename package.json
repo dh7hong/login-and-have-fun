@@ -33,7 +33,8 @@
     "build": "cross-env NODE_PATH=src react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "cross-env NODE_PATH=src npm run build"
+    "heroku-postbuild": "cross-env NODE_PATH=src npm run build",
+    "deploy": "yarn run build && aws s3 sync build/ s3://login-and-have-fun"
   },
   "eslintConfig": {
     "extends": [
