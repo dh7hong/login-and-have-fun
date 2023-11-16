@@ -65,6 +65,12 @@
       "contents": "Check the app's features.",
       "isDone": false,
       "id": 11
+    },
+    {
+      "title": "Deploy",
+      "contents": "Deploy the project onto a server.",
+      "isDone": false,
+      "id": 12
     }
   ]
 }

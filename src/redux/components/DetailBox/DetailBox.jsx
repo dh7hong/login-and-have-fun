@@ -28,7 +28,7 @@ function DetailBox() {
   const todo = filteredTodos[0];
   console.log(`todo: ${todo}`);
   const handleButtonClick = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   return (
