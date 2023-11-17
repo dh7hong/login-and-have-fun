@@ -23,7 +23,7 @@ function DetailBox() {
 
   const obj = data.filter(item => item.id == params.id);
   const filteredTodos = obj;
-
+  console.log('filteredTodos', filteredTodos)
   const todo = filteredTodos[0];
   console.log(`todo: ${todo}`);
   const handleButtonClick = () => {
