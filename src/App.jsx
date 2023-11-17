@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useMutation } from 'react-query';
-import { useDispatch } from 'react-redux';
-import { logout, setToken, setUserId } from './redux/modules/userSlice';
-import { registerUser, loginUser, authUser } from './api/authService';
-import axios from 'axios';
-import store from './redux/config/configStore';
+import React from 'react';
 import Header from './redux/components/Header/Header';
-import { BrowserRouter, Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';

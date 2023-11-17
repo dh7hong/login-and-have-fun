@@ -1,34 +1,33 @@
-import React, { useEffect } from "react";
-import { StyledDiv, StyledTable, StyledTh, StyledButton } from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getTodos } from "../../../api/todos";
-import { useQuery } from "react-query";
+import React from 'react';
+import { StyledDiv, StyledTable, StyledTh, StyledButton } from './styles';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getTodos } from '../../../api/todos';
+import { useQuery } from 'react-query';
 
 function DetailBox() {
-
   const navigate = useNavigate();
 
-  const { isLoading, isError, data } = useQuery("todos", getTodos);
+  const { isLoading, isError, data } = useQuery('todos', getTodos);
 
   const params = useParams();
+
+  if (isLoading) {
+    return <p>Loading....!</p>;
+  }
+
+  if (isError) {
+    return <p>Error...!</p>;
+  }
+
   console.log(`params: ${JSON.stringify(params)}`);
 
-  const obj = data.filter((item) => item.id == params.id);
+  const obj = data.filter(item => item.id == params.id);
   const filteredTodos = obj;
-
-
-  // useEffect(() => {
-  //   if (filteredTodos.length <= 0 || filteredTodos.length > 1) {
-  //     alert("This is an incorrect approach. Navigating to the main page.");
-  //     navigate("/");
-  //   }
-  // }, []);
 
   const todo = filteredTodos[0];
   console.log(`todo: ${todo}`);
   const handleButtonClick = () => {
-    navigate("/home");
+    navigate('/home');
   };
 
   return (
@@ -53,12 +52,10 @@ function DetailBox() {
         </tr>
         <tr>
           <StyledTh>Status</StyledTh>
-          <StyledTh>{todo?.isDone ? "Finished" : "Unfinished"}</StyledTh>
+          <StyledTh>{todo?.isDone ? 'Finished' : 'Unfinished'}</StyledTh>
         </tr>
       </StyledTable>
-      <StyledButton onClick={handleButtonClick}>
-        Go Back
-      </StyledButton>
+      <StyledButton onClick={handleButtonClick}>Go Back</StyledButton>
     </StyledDiv>
   );
 }

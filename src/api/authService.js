@@ -1,7 +1,6 @@
 import axios from "axios";
 import store from "../redux/config/configStore";
 import { setToken, setUserId } from "../redux/modules/userSlice";
-import { useNavigate } from "react-router-dom";
 
 const catchErrors = (error) => {
   if (error.response) {
