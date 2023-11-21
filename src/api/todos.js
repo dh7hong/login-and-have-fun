@@ -3,7 +3,7 @@ import axios from "axios";
 // const SERVER_URI = "https://json-server-vercel-main-n6cspdlyg.vercel.app";
 
 const SERVER_URI = "https://ballistic-royal-cobbler.glitch.me/";
-// const SERVER_URI = "http://localhost:3001";
+// const SERVER_URI = "https://really-cool-really.onrender.com";
 
 const getTodos = async () => {
   const response = await axios.get(`${SERVER_URI}/todos`);
