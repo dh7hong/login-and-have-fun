@@ -40,6 +40,7 @@ const loginUser = async (userData) => {
     );
 
     const token = response.data.token;
+    console.log(response)
     const userId = JSON.parse(response.config.data).id;
 
     localStorage.setItem('token', token); // Use 'token' as the key
